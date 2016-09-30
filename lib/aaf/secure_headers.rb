@@ -1,4 +1,4 @@
-require "aaf/secure_headers/version"
+require 'aaf/secure_headers/version'
 require 'secure_headers'
 
 module AAF
