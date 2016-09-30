@@ -1,5 +1,6 @@
 require 'aaf/secure_headers/version'
 require 'secure_headers'
+require 'active_support/core_ext/integer/time'
 
 module AAF
   module SecureHeaders
