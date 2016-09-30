@@ -1,11 +1,7 @@
 require 'spec_helper'
 
-describe Aaf::SecureHeaders do
+describe AAF::SecureHeaders do
   it 'has a version number' do
-    expect(Aaf::SecureHeaders::VERSION).not_to be nil
-  end
-
-  it 'does something useful' do
-    expect(false).to eq(true)
+    expect(AAF::SecureHeaders::VERSION).not_to be nil
   end
 end

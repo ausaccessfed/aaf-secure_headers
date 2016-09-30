@@ -1,6 +1,6 @@
 require "aaf/secure_headers/version"
 
-module Aaf
+module AAF
   module SecureHeaders
     # Your code goes here...
   end
