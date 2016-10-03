@@ -28,11 +28,10 @@ module AAF
 
         default_src: ["'none'"],
         base_uri: ["'none'"],
-        font_src: ["'self'", 'data:', 'https://fonts.gstatic.com'],
+        font_src: ["'self'", 'https://fonts.gstatic.com'],
         form_action: ["'self'"],
         frame_ancestors: ["'none'"],
         img_src: ["'self'", 'data:'],
-        object_src: ["'self'"],
         script_src: ["'self'"],
         style_src: ["'self'", 'https://fonts.googleapis.com'],
         report_uri: []
