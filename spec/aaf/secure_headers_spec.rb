@@ -4,7 +4,7 @@ RSpec.describe AAF::SecureHeaders do
   end
 
   describe '::development_mode!' do
-    let(:middleware) { spy }
+    let(:middleware) { spy(ActionDispatch::MiddlewareStack) }
     let(:csp_config) { spy(Hash) }
 
     let(:secure_headers_config) do
