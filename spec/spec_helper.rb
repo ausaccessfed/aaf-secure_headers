@@ -1,5 +1,7 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
 require 'aaf/secure_headers'
+require 'action_dispatch'
 
 class Rails < BasicObject
   def self.application; end
