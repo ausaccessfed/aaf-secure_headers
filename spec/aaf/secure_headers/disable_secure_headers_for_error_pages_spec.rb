@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe AAF::SecureHeaders::DisableSecureHeadersForErrorPages do
-  let(:app) { ->(e) { response } }
+  let(:app) { ->(_) { response } }
   let(:env) { {} }
   subject { described_class.new(app) }
 
