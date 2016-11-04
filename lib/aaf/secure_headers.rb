@@ -1,4 +1,5 @@
 require 'aaf/secure_headers/version'
+require 'aaf/secure_headers/disable_secure_headers_for_error_pages'
 require 'secure_headers'
 require 'active_support/core_ext/integer/time'
 
@@ -36,6 +37,37 @@ module AAF
         style_src: ["'self'", 'https://fonts.googleapis.com'],
         report_uri: []
       }
+    end
+
+    class <<self
+      def development_mode!
+        ensure_rails
+        insert_dev_middleware
+        override_dev_configuration
+      end
+
+      private
+
+      def ensure_rails
+        return if const_defined?('Rails')
+
+        raise 'The Rails class is not defined. The `development_mode!` helper '\
+              'can only be used in a Rails application.'
+      end
+
+      def insert_dev_middleware
+        Rails.application.config.middleware.insert_after(
+          ::SecureHeaders::Middleware,
+          AAF::SecureHeaders::DisableSecureHeadersForErrorPages
+        )
+      end
+
+      def override_dev_configuration
+        ::SecureHeaders::Configuration.override(:default) do |config|
+          config.hsts = nil
+          config.csp[:upgrade_insecure_requests] = false
+        end
+      end
     end
   end
 end
