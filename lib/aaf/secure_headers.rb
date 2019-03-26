@@ -9,9 +9,7 @@ module AAF
       config.cookies = {
         secure: true,
         httponly: true,
-        samesite: {
-          lax: false
-        }
+        samesite: ::SecureHeaders::OPT_OUT
       }
 
       config.hsts = "max-age=#{6.months.to_i}; includeSubdomains; preload"
@@ -20,7 +18,7 @@ module AAF
       config.x_xss_protection = '1; mode=block'
       config.x_download_options = 'noopen'
       config.x_permitted_cross_domain_policies = 'none'
-      config.referrer_policy = 'strict-same-origin'
+      config.referrer_policy = 'strict-origin'
 
       config.csp = {
         preserve_schemes: false,
