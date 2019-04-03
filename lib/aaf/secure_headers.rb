@@ -9,7 +9,7 @@ module AAF
       config.cookies = {
         secure: true,
         httponly: true,
-        samesite: ::SecureHeaders::OPT_OUT
+        samesite: { strict: true }
       }
 
       config.hsts = "max-age=#{6.months.to_i}; includeSubdomains; preload"
@@ -31,8 +31,9 @@ module AAF
         form_action: ["'self'"],
         frame_ancestors: ["'none'"],
         img_src: ["'self'", 'data:'],
+        connect_src: ["'self'"],
         script_src: ["'self'"],
-        style_src: ["'self'", 'https://fonts.googleapis.com'],
+        style_src: ["'self'", 'https://fonts.googleapis.com', 'unsafe-inline'],
         report_uri: []
       }
     end
