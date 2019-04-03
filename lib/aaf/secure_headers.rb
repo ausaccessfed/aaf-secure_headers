@@ -33,7 +33,8 @@ module AAF
         img_src: ["'self'", 'data:'],
         connect_src: ["'self'"],
         script_src: ["'self'"],
-        style_src: ["'self'", 'https://fonts.googleapis.com', 'unsafe-inline'],
+        style_src:
+          ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
         report_uri: []
       }
     end
