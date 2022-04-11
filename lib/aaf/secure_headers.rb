@@ -28,7 +28,7 @@ module AAF
         default_src: ["'none'"],
         base_uri: ["'none'"],
         font_src: ["'self'", 'https://fonts.gstatic.com'],
-        form_action: ["'self'"],
+        form_action: ["'self'", 'https://*.aaf.edu.au/auth/auth/openid_connect'],
         frame_ancestors: ["'none'"],
         img_src: ["'self'", 'data:'],
         script_src: ["'self'"],
