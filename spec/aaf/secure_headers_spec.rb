@@ -11,6 +11,8 @@ RSpec.describe AAF::SecureHeaders do
       spy(SecureHeaders::Configuration, csp: csp_config)
     end
 
+    let(:use_default_overrides) { true }
+
     before do
       allow(Rails).to receive_message_chain(:application, :config, :middleware)
         .and_return(middleware)
@@ -20,7 +22,18 @@ RSpec.describe AAF::SecureHeaders do
     end
 
     def run
-      subject.development_mode!
+      subject.development_mode!(use_default_overrides: use_default_overrides)
+    end
+
+    context 'when disabling default overrides' do
+      let(:use_default_overrides) { false }
+
+      it 'doesnt override the defaults' do
+        run
+        expect(secure_headers_config).not_to have_received(:hsts=).with(nil)
+        expect(csp_config).not_to have_received(:[]=)
+          .with(:upgrade_insecure_requests, false)
+      end
     end
 
     it 'raises an exception when Rails is undefined' do

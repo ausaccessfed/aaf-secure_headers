@@ -38,10 +38,10 @@ module AAF
     end
 
     class <<self
-      def development_mode!
+      def development_mode!(use_default_overrides: true)
         ensure_rails
         insert_dev_middleware
-        override_dev_configuration
+        override_dev_configuration if use_default_overrides
       end
 
       private
